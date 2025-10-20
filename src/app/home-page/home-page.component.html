@@ -1,0 +1,144 @@
+<mat-sidenav-container class="sidenav-container" autosize>
+  <!-- Sidebar gauche -->
+  <mat-sidenav mode="side" [opened]="true" class="sidenav" [class.collapsed]="isCollapsed" >
+    <div class="sidebar-header">
+      <button mat-icon-button class="menu-toggle" (click)="toggleSidebar()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="logo-text" [class.hidden]="isCollapsed">SHIFTY</span>
+    </div>
+
+    <mat-nav-list class="menu-list" [class.collapsed]="isCollapsed">
+      <a mat-list-item class="menu-item">
+        <div>
+          <mat-icon>lightbulb</mat-icon>
+          <span class="text-label" [class.hidden]="isCollapsed">Nouvelle discussion</span>
+        </div>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Contenu principal -->
+  <mat-sidenav-content class="sidenav-content">
+    <!-- Barre droite -->
+    <div class="right-panel">
+      <!-- Menu Modules -->
+      <button
+        mat-raised-button
+        color="primary"
+        class="modules-btn"
+        [matMenuTriggerFor]="modulesMenu"
+      >
+        <mat-icon>apps</mat-icon>
+        Modules
+      </button>
+
+      <mat-menu #modulesMenu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>event</mat-icon>
+          <span>Planning</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>store</mat-icon>
+          <span>Inventaire</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>groups</mat-icon>
+          <span>Employés</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>payment</mat-icon>
+          <span>Comptabilité</span>
+        </button>
+      </mat-menu>
+
+      <!-- Menu Profil -->
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="profileMenu"
+        class="profile-btn"
+      >
+        <img
+          src="assets/images/img.png"
+          alt=""
+          class="profile-photo"
+        />
+      </button>
+
+      <mat-menu #profileMenu="matMenu" class="profile-menu">
+        <div class="profile-header">
+          <img src="assets/profile.jpg" alt="Profil" class="profile-photo" />
+          <div class="profile-info">
+            <strong>{{ user.name }}</strong>
+            <small>{{ user.email }}</small>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>
+          <mat-icon>person</mat-icon>
+          <span>Mon profil</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Déconnexion</span>
+        </button>
+      </mat-menu>
+    </div>
+
+    <div class="content-wrapper">
+
+      <div class="dashboard-header">
+        <h2>Tableau de bord</h2>
+        <small>Semaine {{ currentWeek }}</small>
+      </div>
+
+      <div class="cards-grid">
+        <mat-card class="stat-card">
+          <mat-card-header>
+            <mat-icon mat-card-avatar color="primary">groups</mat-icon>
+            <mat-card-title>Employés actifs</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <h3>42</h3>
+            <p>En service cette semaine</p>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="stat-card">
+          <mat-card-header>
+            <mat-icon mat-card-avatar color="primary">event</mat-icon>
+            <mat-card-title>Semaines planifiées</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <h3>35 / 52</h3>
+            <p>Avancement annuel</p>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="stat-card">
+          <mat-card-header>
+            <mat-icon mat-card-avatar color="primary">access_time</mat-icon>
+            <mat-card-title>Heures totales</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <h3>1 268 h</h3>
+            <p>Travaillées cette semaine</p>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="stat-card">
+          <mat-card-header>
+            <mat-icon mat-card-avatar color="warn">beach_access</mat-icon>
+            <mat-card-title>Congés en attente</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <h3>4</h3>
+            <p>Demandes non validées</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <!-- Tu peux plus tard ajouter ici une section calendrier ou activités récentes -->
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

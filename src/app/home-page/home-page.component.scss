@@ -1,0 +1,281 @@
+/* === home-page.component.scss === */
+
+.sidenav-container {
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.sidenav {
+  --sidenav-w: 272px;
+  width: var(--sidenav-w);
+  background-color: #f0f4f9; /* on ne change pas ta couleur */
+  color: #3c4043;
+  padding: 14px;
+  transition: width 0.3s ease-in-out;
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+  &.collapsed {
+    --sidenav-w: 68px;
+  }
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  gap: 16px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  gap: 5px;
+  color: #5c636a;
+
+  div {
+    display: flex;
+    padding: 10px 6px;
+  }
+
+  span {
+    margin-top: 1px;
+  }
+
+  &.mdc-list-item {
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    border-radius: 20px;
+    color: #5c636a;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: #e4e9f1;
+    }
+
+    &.active {
+      background: #dbe7ff;
+      color: #1a73e8;
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    mat-icon {
+      font-size: 18px !important;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.text-label {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  white-space: nowrap;
+}
+
+.sidenav.collapsed .text-label {
+  display: none;
+  opacity: 0;
+  visibility: visible !important;
+}
+
+.sidenav-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #fff;
+}
+
+.content-wrapper {
+  max-width: 900px;
+  width: 100%;
+  margin-right: 130px; /* espace pour la barre droite */
+  padding-top: 80px; /* pour éviter de passer sous la barre droite */
+}
+
+/* ======== BARRE DROITE (Modules + Profil) ======== */
+.right-panel {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+
+  z-index: 1000;
+  background: #ffffff;
+}
+
+/* Bouton Modules */
+.modules-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  border-radius: 2rem;
+  text-transform: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+  mat-icon {
+    font-size: 20px;
+  }
+
+  &:hover {
+    background: #ebf3ff;
+  }
+}
+
+
+
+/* ======== HEADER ======== */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white;
+  color: #333;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.upgrade-button {
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.user-profile-button {
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  padding: 0;
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 768px) {
+  .right-panel {
+    top: auto;
+    bottom: 1rem;
+    right: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .content-wrapper {
+    margin-right: 0;
+    padding-top: 100px;
+  }
+}
+
+.mat-mdc-icon-button{
+  padding: 0;
+}
+
+/* ======== SECTION DASHBOARD ======== */
+.dashboard-header {
+  margin-bottom: 24px;
+  h2 {
+    margin: 0;
+    font-weight: 600;
+    color: #3c4043;
+  }
+  small {
+    color: #888;
+  }
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  border-radius: 16px !important;
+  //box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    //box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  mat-card-header {
+    align-items: center;
+    mat-icon {
+      font-size: 28px;
+      margin-right: 10px;
+    }
+    mat-card-title {
+      font-weight: 500;
+      color: #3c4043;
+    }
+  }
+
+  mat-card-content {
+    h3 {
+      font-size: 24px;
+      margin: 0;
+      color: #1a73e8;
+      font-weight: 600;
+    }
+    p {
+      color: #6b7280;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+  }
+}
+
+/* === ADAPTATION DU CONTENU SELON LA SIDEBAR === */
+
+.sidenav-content {
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Largeur normale quand la sidebar est ouverte */
+.sidenav:not(.collapsed) ~ .mat-sidenav-content,
+.mat-sidenav-content {
+  margin-left: 272px; // largeur de la sidebar ouverte
+}
+
+/* Quand la sidebar est réduite */
+.sidenav.collapsed ~ .mat-sidenav-content {
+  margin-left: 68px; // largeur de la sidebar fermée
+}
+
+/* Contenu interne */
+.content-wrapper {
+  flex: 1;
+  width: calc(100% - 1rem);
+  max-width: 1200px;
+  margin: 80px auto 0;
+  transition: all 0.3s ease-in-out;
+}
