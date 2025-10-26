@@ -41,6 +41,4 @@ export class HomePageComponent {
   };
 
   currentWeek = 43;
-
-
 }
